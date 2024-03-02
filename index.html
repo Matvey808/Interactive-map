@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта Центра ИКТ ГАПОУ КП №11</title>
+    <link rel="icon" href="icona.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6600;
+        }
+
+        .building-map {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .floor-selection {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .floor-selection h2 {
+            color: #333;
+        }
+
+        .floor-selection ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .floor-selection li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .floor-selection li a {
+            text-decoration: none;
+            color: #ff6600;
+            font-weight: bold;
+        }
+
+        .floor-selection li a:hover {
+            text-decoration: underline;
+        }
+
+        .room-selection {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .room-selection h2 {
+            color: #333;
+        }
+
+        .room-selection ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .room-selection li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .room-selection li a {
+            text-decoration: none;
+            color: #ff6600;
+        }
+
+        .room-selection li a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html"><img class="logo" src="logo11.png" alt="Логотип Центра ИКТ ГАПОУ КП №11"></a>
+        <h1>Центр ИКТ ГАПОУ КП №11</h1>
+        <div class="building-map">
+            <img src="" alt="Рисунок здания">
+        </div>
+        <div class="floor-selection">
+            <h2>Выберите этаж:</h2>
+            <ul>
+                <li><a href="#floor1">1 этаж</a></li>
+                <li><a href="#floor2">2 этаж</a></li>
+                <li><a href="#floor3">3 этаж</a></li>
+                <li><a href="#floor4">4 этаж</a></li>
+            </ul>
+        </div>
+        <div class="room-selection">
+            <!-- здесь будет отображаться выбор кабинета -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const floorLinks = document.querySelectorAll('.floor-selection a');
+            const roomSelection = document.querySelector('.room-selection');
+
+            floorLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const floorId = this.getAttribute('href').slice(1);
+                    showRooms(floorId);
+                });
+            });
+
+            function showRooms(floorId) {
+                roomSelection.style.display = 'block';
+                roomSelection.innerHTML = '';
+
+                if (floorId === 'floor1') {
+                    roomSelection.innerHTML = `
+                        <h2>Выберите кабинет:</h2>
+                        <ul>
+                            <li><a href="#">101</a></li>
+                            <li><a href="#">102</a></li>
+                            <li><a href="#">103</a></li>
+                        </ul>
+                    `;
+                } else if (floorId === 'floor2') {
+                    roomSelection.innerHTML = `
+                        <h2>Выберите кабинет:</h2>
+                        <ul>
+                            <li><a href="#">201</a></li>
+                            <li><a href="#">202</a></li>
+                            <li><a href="#">203</a></li>
+                        </ul>
+                    `;
+                } else if (floorId === 'floor3') {
+                    roomSelection.innerHTML = `
+                        <h2>Выберите кабинет:</h2>
+                        <ul>
+                            <li><a href="#">301</a></li>
+                            <li><a href="#">302</a></li>
+                            <li><a href="#">303</a></li>
+                        </ul>
+                    `;
+                } else if (floorId === 'floor4') {
+                    roomSelection.innerHTML = `
+                        <h2>Выберите кабинет:</h2>
+                        <ul>
+                            <li><a href="#">401</a></li>
+                            <li><a href="#">402</a></li>
+                            <li><a href="#">403</a></li>
+                        </ul>
+                    `;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
