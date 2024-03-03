@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта Центра ИКТ ГАПОУ КП №11</title>
+    <link rel="icon" href="icona.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html"><img class="logo" src="logo11.png" alt="Логотип Центра ИКТ ГАПОУ КП №11"></a>
+        <h1>Центр ИКТ ГАПОУ КП №11</h1>
+        <div class="floor-selection">
+            <h2>Выберите этаж:</h2>
+            <ul>
+                <li><a href="#" onclick="showFloor('1')">1 этаж</a></li>
+                <li><a href="#" onclick="showFloor('2')">2 этаж</a></li>
+                <li><a href="#" onclick="showFloor('3')">3 этаж</a></li>
+                <li><a href="#" onclick="showFloor('4')">4 этаж</a></li>
+            </ul>
+        </div>
+        <div class="building-map">
+            <!-- здесь будет отображаться фото плана этажа -->
+        </div>
+        <div class="room-selection">
+            <!-- здесь будет отображаться выбор кабинета -->
+        </div>
+    </div>
+    <script>
+        function showFloor(floorId) {
+            const floorPlans = {
+                '1': { image: 'floor1.jpg', rooms: ['101', '102', '103'] },
+                '2': { image: 'floor2.jpg', rooms: ['201', '202', '203'] },
+                '3': { image: 'floor3.jpg', rooms: ['301', '302', '303'] },
+                '4': { image: 'floor4.jpg', rooms: ['401', '402', '403'] }
+            };
+
+            const selectedFloor = floorPlans[floorId];
+            const buildingMap = document.querySelector('.building-map');
+            buildingMap.innerHTML = `
+                <img class="floor-plan" src="${selectedFloor.image}" alt="План этажа">
+            `;
+
+            const roomSelection = document.querySelector('.room-selection');
+            roomSelection.style.display = 'block';
+            roomSelection.innerHTML = `
+                <h2>Выберите кабинет на ${floorId} этаже:</h2>
+                <ul>
+                    ${selectedFloor.rooms.map(room => `<li><a href="#" onclick="showRoom('${room}')">${room}</a></li>`).join('')}
+                </ul>
+            `;
+        }
+
+        function showRoom(roomId) {
+            const rooms = {
+                '101': { name: 'Кабинет 101', photo: 'photo101.jpg' },
+                '102': { name: 'Кабинет 102', photo: 'photo102.jpg' },
+                '103': { name: 'Кабинет 103', photo: 'photo103.jpg' },
+                '201': { name: 'Кабинет 201', photo: 'photo201.jpg' },
+                '202': { name: 'Кабинет 202', photo: 'photo202.jpg' },
+                '203': { name: 'Кабинет 203', photo: 'photo203.jpg' },
+                '301': { name: 'Кабинет 301', photo: 'photo301.jpg' },
+                '302': { name: 'Кабинет 302', photo: 'photo302.jpg' },
+                '303': { name: 'Кабинет 303', photo: 'photo303.jpg' },
+                '401': { name: 'Кабинет 401', photo: 'photo401.jpg' },
+                '402': { name: 'Кабинет 402', photo: 'photo402.jpg' },
+                '403': { name: 'Кабинет 403', photo: 'photo403.jpg' }
+            };
+
+            const room = rooms[roomId];
+            const roomSelection = document.querySelector('.room-selection');
+            roomSelection.innerHTML += `
+                <h2>${room.name}</h2>
+                <img class="room-photo" src="${room.photo}" alt="${room.name}">
+            `;
+        }
+    </script>
+</body>
+</html>
