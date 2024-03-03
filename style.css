@@ -17,15 +17,6 @@ body {
 h1 {
     text-align: center;
     color: #ff6600;
-    background: linear-gradient(to right, #ff6600, #ffaa00);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.building-map {
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 .floor-selection {
@@ -55,6 +46,18 @@ h1 {
 
 .floor-selection li a:hover {
     text-decoration: underline;
+}
+
+.building-map {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.floor-plan {
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .room-selection {
@@ -90,4 +93,10 @@ h1 {
     display: block;
     margin: 0 auto;
     max-width: 200px;
+}
+
+.room-photo {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
